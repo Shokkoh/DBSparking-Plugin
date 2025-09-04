@@ -1,0 +1,9 @@
+name: DBSparking
+version: 1.0
+main: com.shokkoh.dbsparking.DBSparking
+author: Shokkoh
+commands:
+  dbsparking:
+    description: Main command for DBSparking
+    usage: /<command> <subcommand>
+    aliases: [dbsp]

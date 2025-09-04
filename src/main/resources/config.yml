@@ -1,0 +1,61 @@
+# ################################################### #
+# ##      Configuration file for DBSparking        ## #
+# ##      Plugin created by ezShokkoh.             ## #
+# ################################################### #
+
+# --- LANGUAGE ---
+# Defines the plugin's message language.
+# Language files are located in the /lang/ folder.
+# Available by default: en (English), es (Spanish).
+language: 'en'
+
+# ################################################### #
+# ##              DATABASE SETTINGS                ## #
+# ################################################### #
+# The type of database to use. Can be 'sqlite' or 'mysql'.
+database:
+  type: 'sqlite'
+
+  # --- MySQL Settings ---
+  # Only used if type is 'mysql'.
+  mysql:
+    host: 'localhost'
+    port: 3306
+    database: 'dbsparking'
+    username: 'root'
+    password: ''
+    useSSL: false
+
+# --- TPs COMBO SYSTEM SETTINGS ---
+# If enabled, you'll be able to acumulate bonus TPs with a 'combo system' upon receiving TPs in a short period of time.
+tps_combo_system:
+  enabled: true
+  # The time in seconds to wait before resetting the combo.
+  reset_time: 3
+  # The increase percentage acumulated for each combo increase.
+  combo_amount: 2.0 # 2% default --- Converts decimal to percentage.
+  # The maximum percentage increase for the combo.
+  max_combo_amount: 25.0 # 25% default --- Converts decimal to percentage.
+
+# --- NUMBER FORMATTING ---
+# Used for placeholders and commands that display large numbers.
+number_format:
+  pattern: "#,###"
+  grouping_separator: "."
+
+# --- SOUNDS ---
+# Spigot sound names. A list can be found here: https://helpch.at/docs/1.7.10/index.html?org/bukkit/Sound.html
+sounds:
+  boost_receive: "LEVEL_UP"
+  global_boost_activate: "ENDERDRAGON_GROWL"
+  boost_expire: "FIZZ"
+
+# --- SOULS INVENTORY SETTINGS ---
+souls_inventory:
+  # Config for slot 2
+  slot2:
+    required_rank: "renacer2" # Example rank name, change it to your server's rank name.
+    tp_cost: 1000000000 # 1 Billion TPs default
+  # Config for slot 4
+  slot4:
+    tp_cost: 1500000000 # 1.5 Billion TPs default

@@ -1,0 +1,164 @@
+# English language file for DBSparking
+
+prefix: "&eD&cB&bSparking! &8⨠&r "
+
+# --- GENERAL MESSAGES ---
+reload_success: "&aConfiguration and messages reloaded successfully!"
+no_permission: "&cYou do not have permission to execute this command."
+unknown_command: "&cUnknown command. Use /dbsp help to see the available commands."
+player_not_online: "&cPlayer '%player%' is not online."
+invalid_number: "&cThe value must be a valid number."
+invalid_boost_type: "&cInvalid booster type. Available types: GLOBAL, PERSONAL, RANK."
+insufficient_arguments: "&cInsufficient arguments. Syntax: %syntax%"
+specify_action_boost: "&cPlease specify an action: add, list, delete."
+specify_action_item: "&cPlease specify an action: create, edit, give, remove, list."
+cant_drop: "&cYou cannot drop this item!"
+
+# --- TPS COMMAND ---
+tps_gave_boosted: "&aYou have given &6%final_amount% TPs &a(+%bonus_amount%) to &e%player%&a."
+tps_gave_normal: "&aYou have given &6%amount% TPs &ato &e%player%&a."
+tps_received_boosted: "&a+&6%final_amount% TPs &a(+%bonus_amount% &7[x%boost_percent%%]&a)"
+tps_received_normal: "&a+&6%amount% TPs&a!"
+
+# --- TPS COMBO MESSAGES ---
+tps_combo_bonus: "&a(x%combo%: +%combo_amount% &7[x%combo_percent%%]&a)"
+tps_combo_max: "&a(Max: +%combo_amount% &7[x%combo_percent%%]&a)"
+
+# --- BOOST COMMANDS ---
+boost_add_success: "&aBooster '%name%' of type %type% added successfully!"
+boost_add_error: "&cThere was an error saving the booster to the database."
+boost_add_already_exists: "&cA booster with the name '%name%' already exists."
+boost_delete_success: "&aBooster '%name%' deleted successfully."
+boost_delete_not_found: "&cNo booster with the name '%name%' was found or an error occurred."
+global_boost_broadcast: "&c%author% &ahas activated a global booster of &e%amount%% &afor &b%time%s&a, with reason: &f%name%"
+boost_list_header: "&e--- Active Boosters List ---"
+boost_list_empty: "&eThere are no active boosters at the moment."
+boost_list_format: "&6- Name: &f%name% &7| &6Target: &f%target% &7| &6Amount: &f%amount%% &7| &6Expires: &f%expires%"
+boost_personal_received: "&aYou have received the personal booster '%name%' for &b%time%&a!"
+
+# --- BOOST EXPIRATION ---
+boost_personal_expired: "&cYour booster '%name%' has expired."
+boost_rank_expired: "&cThe rank booster '%name%' for the rank %rank% has expired."
+boost_global_expired: "&cThe global booster '%name%' activated by %author% has expired."
+boost_personal_active_on_login: "&eYou still have an active personal booster: &f%name% &e(&b%time% &eremaining)."
+
+# --- ITEM COMMANDS ---
+item_give_success: "&aYou have given the item '%name%&a' to &e%player%&a."
+item_create_success: "&aItem '%name%' created successfully with ID %id%!"
+item_create_no_item: "&cYou must be holding an item in your hand to create a custom item."
+item_create_invalid_type: "&cInvalid item type. Use WEAPON, ARMOR or SOUL."
+item_create_invalid_rarity: "&cInvalid item rarity. Use COMMON, UNCOMMON, RARE, EPIC or LEGENDARY."
+item_create_already_exists: "&cAn item with the internal name '%name%' already exists."
+item_not_found: "&cNo item with the internal name '%name%' was found."
+item_lore_prompt: "&aPlease type the text for lore line #%line% in chat. Type 'cancel' to abort."
+item_lore_success: "&aLore for item '%name%' updated successfully."
+item_lore_invalid_line: "&cInvalid line number. Must be between 1 and 6."
+item_lore_invalid_action: "&cInvalid action. Use 'add', 'edit', or 'delete'."
+item_lore_cancelled: "&cLore editing cancelled."
+item_stat_success: "&aStats for item '%name%' updated successfully."
+item_stat_invalid_stat: "&cInvalid stat. Use STR, DEX, CON, WIL, MND, or SPI."
+item_stat_invalid_modifier: "&cInvalid modifier. Use ADD, MULTIPLY, or PERCENT."
+item_final_lore_header: "&6&l⨠ &e&lFull Equipment Set Bonus"
+item_list_header: "&e--- Custom Items List ---"
+item_list_empty: "&eNo custom items have been created yet."
+item_list_format: "&6- Name: &f%name% &7| &6Type: &f%type% &7| &6Display: %display%"
+item_edit_success: "&aItem '%name%' updated successfully."
+item_edit_syntax: "&cSyntax: /dbsp item edit <old_name> <new_name> \"<new_display_name>\""
+item_delete_success: "&aItem '%name%' deleted successfully."
+item_condition_invalid: "&cInvalid condition. Use LEVEL or RANK."
+item_condition_no_rank: "&cYou must specify a rank for this item."
+item_condition_success: "&aConditions for item '%name%' updated successfully."
+item_condition_level_fail: "&cYou do not meet the level requirement for this item. (Required: %min%-%max%)"
+item_condition_rank_fail: "&cYou do not have the required rank for this item. (Required: %rank%)"
+
+# --- SOUL MANAGEMENT ---
+soul_inventory_open: "&aYou have opened your soul inventory."
+soul_inventory_open_other: "&aYou have opened &e%player%'s &asoul inventory."
+soul_blocked_slot: "&cBlocked Slot."
+soul_required_group: "&eRequires Group: &e&l%group%"
+soul_unlock_slot: "&eUnlock Slot #%slot%"
+soul_unlock_cost: "&7Cost: &b%cost% TPs"
+soul_unlock_click: "&aClick to unlock this slot!"
+soul_insufficient_tps: "&cYou do not have enough TPs to unlock this slot. (Cost: %cost% TPs)"
+soul_unlocked: "&aYou have successfully unlocked slot #%slot%!"
+soul_no_empty_slot: "&cYou have no empty soul slots available."
+soul_inventory_full: "&cYour inventory is full, you cannot unequip this soul."
+
+# --- ITEM LORE AND RARITY ---
+item_lore_header: "&7--> &a&lSTATS &7<--"
+item_lore_prefixes:
+  str: "&c&l⚔"
+  dex: "&9&l☠"
+  con: "&a&l❤"
+  wil: "&b&l✿"
+  mnd: "&d&l☆"
+  spi: "&e&l⚡"
+item_rarities:
+  common: "&8[&6&l✮&8] &7&lCOMMON ITEM"
+  uncommon: "&8[&6&l✮✮&8] &a&lUNCOMMON ITEM"
+  rare: "&8[&6&l✮✮✮&8] &b&lRARE ITEM"
+  epic: "&8[&6&l✮✮✮✮&8] &5&lEPIC ITEM"
+  legendary: "&8[&6&l✮✮✮✮&8] &6&lLEGENDARY ITEM"
+
+# --- DATA COMMANDS ---
+invalid_action: "&cInvalid action. Use 'delete' or 'confirm'."
+data_delete_kick_message: "&cYou have been kicked from the server for a data reset. Please rejoin to continue playing."
+data_delete_success: "&aData '%data%' for player '%player%' has been successfully deleted."
+data_delete_failed: "&cFailed to delete data '%data%' for player '%player%'. They may not be online or the data does not exist."
+data_delete_confirmation: "&eYou are about to delete all &c%type% &edata for player &c%player%&e. This action is IRREVERSIBLE. Type &a/dbsp data confirm &ewithin 10 seconds to proceed."
+data_delete_no_pending: "&cYou have no pending data deletion to confirm."
+data_delete_expired: "&cYour data deletion request has expired. Please run the delete command again."
+data_invalid_type: "&cInvalid data type. Use 'dbc', 'npc', or 'all'."
+delete_title_data: "&aYou have deleted the &cTitle&a data for &e%player%&a."
+
+# --- EAP COMMAND ---
+eap_input_missing: "&cYou must specify a message or command to execute."
+eap_command_success: "&aCommand executed as &e%player%&a: &f%input%"
+eap_command_error: "&cAn error occurred while executing the command: %error%"
+eap_chat_success: "&aMessage sent as &e%player%&a: &f%input%"
+
+# --- AUTO-LOGIN COMMAND ---
+autologin_password_required: "&cUsage: /dbsp autologin <current_password>"
+autologin_incorrect_password: "&cIncorrect password. Auto-login setup cancelled."
+autologin_confirm:
+  - "&eAre you sure you want to link your current IP (%ip%) to your account (%nick%)?"
+  - "&eIf you confirm, you will be logged in automatically from this IP."
+  - "&cWARNING: To unlink it, you must open a ticket on Discord with proof of ownership."
+  - "&aType &l/dbsp autologin <password> &aagain to confirm within the next 10 seconds."
+autologin_success: "&aSuccess! Your IP has been linked. The next time you connect from this location, you will be logged in automatically."
+autologin_expired: "&cThe time to confirm has expired. Please try again."
+autologin_welcome: "&aWelcome back! You have been logged in automatically thanks to auto-login."
+
+# --- GUI CUSTOM ITEMS ---
+customitem:
+    gui_title: "&9Custom Items (Page %page%)"
+    button_create_name: "&a&lCreate New Item"
+    button_create_lore: "&7Use the item in your hand to create a new custom item."
+    button_next_page: "&eNext Page ->"
+    button_prev_page: "&e<- Previous Page"
+    prompt_enter_name: "&aType in chat a unique internal name for your item (no spaces). Type 'cancel' to abort."
+    error_no_item: "&cYou must be holding an item in your hand to create a custom item."
+    error_name_exists: "&cAn item with the internal name '%name%' already exists."
+    creation_cancelled: "&eItem creation cancelled."
+    success_creation: "&aItem '%name%' created successfully. Edit it in files.yml config file."
+
+# --- PLACEHOLDER MESSAGES ---
+placeholder:
+  soul_inventory_title: "§c§lSoul Management"
+  level_prefix: "Lv "
+  boost_inactive: "&cInactive"
+  class_0: "&9Martial Artist"
+  class_1: "&bSpiritualist"
+  class_2: "&eWarrior"
+  race_0: "&9Human"
+  race_1: "&6Saiyan"
+  race_2: "&eHalf-Saiyan"
+  race_3: "&aNamekian"
+  race_4: "&5Arcosian"
+  race_5: "&dMajin"
+
+# --- CUSTOMNPCS+ HOOK MESSAGES ---
+quest_kill_objective: "Defeat &c%target%&r:"
+quest_item_objective: "Obtain &b%item%&r:"
+quest_location_objective: "Find &b%location%&r:"
+party_leader_name: "&e%leader%&a's Party"

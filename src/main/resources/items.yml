@@ -1,0 +1,18 @@
+# Configuration file for the Custom Items (do not confuse with Stats Items).
+# You can add or edit items here, just make sure to follow the correct format.
+# You can use color codes with '&' and use placeholders like %player% in commands and messages.
+# Remember to restart the server or reload the plugin for changes to take effect.
+Items:
+# welcome_item:
+#   ItemName: '&bWelcome Gift!'
+#   ItemID: 38 # Item ID -> Ex: 35 for wool
+#   ItemData: 7 # Sub-Item ID -> Ex: 9 for cyan wool
+#   Damage: 25 # Attack Damage, not durability. Set -1.0 to disable and use default item damage.
+#   ExecuteAsOp: false
+#   ConsumeOnUse: true
+#   Commands:
+#   - 'eco give %player% 100'
+#   Lore:
+#   - '&7A small gift to start.'
+#   - ''
+#   MessageOnUse: '&aYou've received 100 coins!'

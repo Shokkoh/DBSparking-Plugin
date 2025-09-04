@@ -1,0 +1,164 @@
+# Archivo de idioma en Español para DBSparking
+
+prefix: "&eD&cB&bSparking! &8⨠&r "
+
+# --- MENSAJES GENERALES ---
+reload_success: "&a¡Configuración y mensajes recargados con éxito!"
+no_permission: "&cNo tienes permiso para ejecutar este comando."
+unknown_command: "&cComando desconocido. Usa /dbsp help para ver los comandos disponibles."
+player_not_online: "&cEl jugador '%player%' no está en línea."
+invalid_number: "&cEl valor debe ser un número válido."
+invalid_boost_type: "&cTipo de booster inválido. Tipos disponibles: GLOBAL, PERSONAL, RANK."
+insufficient_arguments: "&cArgumentos insuficientes. Sintaxis: %syntax%"
+specify_action_boost: "&cPor favor especifica una acción: add, list, delete."
+specify_action_item: "&cPor favor especifica una acción: create, edit, give, remove, list."
+cant_drop: "&c¡No puedes soltar este item!"
+
+# --- COMANDO TPS ---
+tps_gave_boosted: "&aHas dado &6%final_amount% TPs &a(+%bonus_amount%) a &e%player%&a."
+tps_gave_normal: "&aHas dado &6%amount% TPs &aa &e%player%&a."
+tps_received_boosted: "&a+&6%final_amount% TPs &a(+%bonus_amount% &7[x%boost_percent%%]§a)"
+tps_received_normal: "&a¡+&6%amount% TPs&a!"
+
+# --- MENSAJES DE COMBO DE TPS ---
+tps_combo_bonus: "&a(x%combo%: +%combo_amount% &7[x%combo_percent%%]&a)"
+tps_combo_max: "&a(Máx: +%combo_amount% &7[x%combo_percent%%]&a)"
+
+# --- COMANDOS DE BOOSTERS ---
+boost_add_success: "&a¡Booster '%name%' de tipo %type% añadido con éxito!"
+boost_add_error: "&cHubo un error al guardar el booster en la base de datos."
+boost_add_already_exists: "&cYa existe un booster con el nombre '%name%'."
+boost_delete_success: "&aBooster '%name%' eliminado con éxito."
+boost_delete_not_found: "&cNo se encontró ningún booster con el nombre '%name%' o hubo un error."
+global_boost_broadcast: "&c%author% &aha activado un booster global de &e%amount%% &adurante &b%time%s&a, por el motivo: &f%name%"
+boost_list_header: "&e--- Lista de Boosters Activos ---"
+boost_list_empty: "&eNo hay boosters activos en este momento."
+boost_list_format: "&6- Nombre: &f%name% &7| &6Target: &f%target% &7| &6Monto: &f%amount%% &7| &6Expira: &f%expires%"
+boost_personal_received: "&a¡Has recibido el booster personal '%name%' durante &b%time%&a!"
+
+# --- EXPIRACIÓN DE BOOSTERS ---
+boost_personal_expired: "&cTu booster '%name%' ha expirado."
+boost_rank_expired: "&cEl booster de rango '%name%' para el rango %rank% ha expirado."
+boost_global_expired: "&cEl booster global '%name%' activado por %author% ha expirado."
+boost_personal_active_on_login: "&eAún tienes un booster personal activo: &f%name% &e(&b%time% &erestante)."
+
+# --- COMANDOS DE ITEMS ---
+item_give_success: "&aHas dado el item '%name%&a' a &e%player%&a."
+item_create_success: "&a¡Item '%name%' creado con éxito con el ID %id%!"
+item_create_no_item: "&cDebes tener un item en la mano para crear un item personalizado."
+item_create_invalid_type: "&cTipo de item inválido. Usa WEAPON, ARMOR o SOUL."
+item_create_invalid_rarity: "&cRareza de item inválida. Usa COMMON, UNCOMMON, RARE, EPIC o LEGENDARY."
+item_create_already_exists: "&cYa existe un item con el nombre interno '%name%'."
+item_not_found: "&cNo se encontró ningún item con el nombre interno '%name%'."
+item_lore_prompt: "&aPor favor, escribe el texto para la línea de lore #%line% en el chat. Escribe 'cancel' para abortar."
+item_lore_success: "&aLore del item '%name%' actualizado con éxito."
+item_lore_invalid_line: "&cNúmero de línea inválido. Debe ser entre 1 y 6."
+item_lore_invalid_action: "&cAcción inválida. Usa 'add', 'edit', o 'delete'."
+item_lore_cancelled: "&cEdición de lore cancelada."
+item_stat_success: "&aEstadísticas del item '%name%' actualizadas con éxito."
+item_stat_invalid_stat: "&cEstadística inválida. Usa STR, DEX, CON, WIL, MND, o SPI."
+item_stat_invalid_modifier: "&cModificador inválido. Usa ADD, MULTIPLY, o PERCENT."
+item_final_lore_header: "&6&l⨠ &e&lBonus de Equipo Completo"
+item_list_header: "&e--- Lista de Items Personalizados ---"
+item_list_empty: "&eAún no se ha creado ningún item personalizado."
+item_list_format: "&6- Nombre: &f%name% &7| &6Tipo: &f%type% &7| &6Display: %display%"
+item_edit_success: "&aItem '%name%' actualizado con éxito."
+item_edit_syntax: "&cSintaxis: /dbsp item edit <nombre_antiguo> <nombre_nuevo> \"<nuevo_display_name>\""
+item_delete_success: "&aItem '%name%' eliminado con éxito."
+item_condition_invalid: "&cCondición inválida. Usa LEVEL o RANK."
+item_condition_no_rank: "&cDebes especificar un rango para este item."
+item_condition_success: "&a¡Condiciones del item '%name%' actualizadas con éxito!"
+item_condition_level_fail: "&cNo cumples el requisito de nivel para este item. (Requerido: %min%-%max%)"
+item_condition_rank_fail: "&cNo tienes el rango requerido para este item. (Requerido: %rank%)"
+
+# --- ADMINISTRACIÓN DE ALMAS ---
+soul_inventory_open: "&aHas abierto tu inventario de almas."
+soul_inventory_open_other: "&aHas abierto el inventario de almas de &e%player%&a."
+soul_blocked_slot: "&cRanura Bloqueada."
+soul_required_group: "&eRequiere Rango: &e&l%group%"
+soul_unlock_slot: "&eDesbloquear Ranura #%slot%"
+soul_unlock_cost: "&7Coste: &b%cost% TPs"
+soul_unlock_click: "&a¡Haz clic para desbloquear esta ranura!"
+soul_insufficient_tps: "&cNo tienes suficientes TPs para desbloquear esta ranura. (Coste: %cost% TPs)"
+soul_unlocked: "&a¡Has desbloqueado con éxito la ranura #%slot%!"
+soul_no_empty_slot: "&cNo tienes ranuras vacías en tu inventario de almas."
+soul_inventory_full: "&cTu inventario de está lleno, no puedes quitarte el alma."
+
+# --- LORE Y RAREZA DE ITEMS ---
+item_lore_header: "&7--> &a&lSTATS &7<--"
+item_lore_prefixes:
+  str: "&c&l⚔"
+  dex: "&9&l☠"
+  con: "&a&l❤"
+  wil: "&b&l✿"
+  mnd: "&d&l☆"
+  spi: "&e&l⚡"
+item_rarities:
+  common: "&8[&6&l✮&8] &7&lITEM COMÚN"
+  uncommon: "&8[&6&l✮✮&8] &a&lITEM POCO COMÚN"
+  rare: "&8[&6&l✮✮✮&8] &b&lITEM RARO"
+  epic: "&8[&6&l✮✮✮✮&8] &5&lITEM ÉPICO"
+  legendary: "&8[&6&l✮✮✮✮✮&8] &6&lITEM LEGENDARIO"
+
+# --- COMANDOS DE DATOS ---
+invalid_action: "&cAcción inválida. Usa 'delete' o 'confirm'."
+data_delete_kick_message: "&cHas sido expulsado del servidor por un reinicio de datos. Por favor, vuelve a unirte para continuar jugando."
+data_delete_success: "&aDatos '%data%' del jugador '%player%' han sido eliminados con éxito."
+data_delete_failed: "&cError al eliminar los datos '%data%' del jugador '%player%'. Puede que no esté en línea o que los datos no existan."
+data_delete_confirmation: "&eEstás a punto de eliminar todos los datos de tipo &c%type% &edel jugador &c%player%&e. Esta acción es IRREVERSIBLE. Escribe &a/dbsp data confirm &een los próximos 10 segundos para proceder."
+data_delete_no_pending: "&cNo tienes ninguna eliminación de datos pendiente por confirmar."
+data_delete_expired: "&cTu solicitud para eliminar datos ha expirado. Por favor, ejecuta el comando de nuevo."
+data_invalid_type: "&cTipo de dato inválido. Usa 'dbc', 'npc', o 'all'."
+delete_title_data: "&aHas borrado los datos del &ctítulo&a de &e%player%&a."
+
+# --- COMANDO EAP ---
+eap_input_missing: "&cDebes especificar un mensaje o comando para ejecutar."
+eap_command_success: "&aComando ejecutado como &e%player%&a: &f%input%"
+eap_command_error: "&cOcurrió un error al ejecutar el comando: %error%"
+eap_chat_success: "&aMensaje enviado como &e%player%&a: &f%input%"
+
+# --- COMANDO DE AUTO-LOGIN ---
+autologin_password_required: "&cUso: /dbsp autologin <contraseña_actual>"
+autologin_incorrect_password: "&cContraseña incorrecta. Se canceló la configuración del auto-login."
+autologin_confirm:
+  - "&e¿Estás seguro de que quieres vincular tu IP actual (%ip%) a tu cuenta (%nick%)?"
+  - "&eSi confirmas, iniciarás sesión automáticamente desde esta IP."
+  - "&cADVERTENCIA: Si quieres desvincularla, deberás abrir un ticket en Discord con pruebas."
+  - "&aVuelve a escribir &l/dbsp autologin <contraseña> &apara confirmar en los próximos 10 segundos."
+autologin_success: "&a¡Perfecto! Tu IP ha sido vinculada. La próxima vez que te conectes desde esta ubicación, iniciarás sesión automáticamente."
+autologin_expired: "&cEl tiempo para confirmar ha expirado. Por favor, vuelve a intentarlo."
+autologin_welcome: "&a¡Bienvenido de nuevo! Has iniciado sesión automáticamente gracias al auto-login."
+
+# --- GUI CUSTOM ITEMS ---
+customitem:
+  gui_title: "&9Items Custom (Página %page%)"
+  button_create_name: "&a&lCrear Nuevo Item"
+  button_create_lore: "&7Usa el item en tu mano como base para registrar uno nuevo en el sistema."
+  button_next_page: "&ePágina Siguiente ->"
+  button_prev_page: "&e<- Página Anterior"
+  prompt_enter_name: "&aEscribe en el chat un nombre interno único para tu item (sin espacios). Escribe 'cancel' para abortar."
+  error_no_item: "&cDebes tener un item en la mano para poder crear uno nuevo."
+  error_name_exists: "&cUn item con el nombre interno '%name%' ya existe."
+  creation_cancelled: "&eCreación de item cancelada."
+  success_creation: "&a¡Item '%name%' registrado con éxito! Edítalo en el archivo items.yml."
+
+# --- MENSAJES PARA PLACEHOLDERS ---
+placeholder:
+  soul_inventory_title: "§c§lAdministración de Almas"
+  level_prefix: "Nv "
+  boost_inactive: "&cInactivo"
+  class_0: "&9Artista Marcial"
+  class_1: "&bEspiritualista"
+  class_2: "&eGuerrero"
+  race_0: "&9Humano"
+  race_1: "&6Saiyajín"
+  race_2: "&eSemi-Saiyajín"
+  race_3: "&aNamekuseín"
+  race_4: "&5Arcosiano"
+  race_5: "&dMajín"
+
+# --- MENSAJES HOOKS CUSTOMNPCS+ ---
+quest_kill_objective: "Derrota a &c%target%&r:"
+quest_item_objective: "Obtén &b%item%&r:"
+quest_location_objective: "Encuentra &b%location%&r:"
+party_leader_name: "&aGrupo de &e%leader%"
