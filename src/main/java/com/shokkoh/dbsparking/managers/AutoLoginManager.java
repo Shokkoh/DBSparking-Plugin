@@ -1,6 +1,7 @@
 package com.shokkoh.dbsparking.managers;
 
 import com.shokkoh.dbsparking.DBSparking;
+import com.shokkoh.dbsparking.datafetcher.AutoLoginData;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -17,7 +18,7 @@ public class AutoLoginManager {
 	private final DBSparking plugin;
 	private final File autoLoginFile;
 	private FileConfiguration autoLoginConfig;
-	private final Map<UUID, String> autoLoginData = new HashMap<>();
+	private final Map<UUID, AutoLoginData> autoLoginData = new HashMap<>();
 
 	public AutoLoginManager(DBSparking plugin) {
 		this.plugin = plugin;
@@ -43,8 +44,10 @@ public class AutoLoginManager {
 			try {
 				UUID playerUUID = UUID.fromString(uuidString);
 				String ip = playersSection.getString(uuidString + ".ip");
+				boolean kick = playersSection.getBoolean(uuidString + ".kickOtherIP", false);
+
 				if (ip != null && !ip.isEmpty()) {
-					autoLoginData.put(playerUUID, ip);
+					autoLoginData.put(playerUUID, new AutoLoginData(ip, kick));
 				}
 			} catch (IllegalArgumentException e) {
 				plugin.getLogger().warning("Invalid UUID found on autologin.yml: " + uuidString);
@@ -53,17 +56,12 @@ public class AutoLoginManager {
 	}
 
 	/**
-	 * Comprueba si un jugador debe ser autenticado automáticamente.
-	 * @param player El jugador que se conecta.
-	 * @return true si el UUID y la IP coinciden con los datos guardados.
+	 * Obtiene la entrada de autologin completa para un jugador.
+	 * @param uuid El UUID del jugador.
+	 * @return El objeto AutoLoginData o null si no existe.
 	 */
-	public boolean shouldAutoLogin(Player player) {
-		String registeredIp = autoLoginData.get(player.getUniqueId());
-		if (registeredIp == null) {
-			return false;
-		}
-		String currentIp = player.getAddress().getAddress().getHostAddress();
-		return registeredIp.equals(currentIp);
+	public AutoLoginData getAutoLoginData(UUID uuid) {
+		return autoLoginData.get(uuid);
 	}
 
 	/**
@@ -74,16 +72,17 @@ public class AutoLoginManager {
 		String currentIp = player.getAddress().getAddress().getHostAddress();
 		UUID playerUUID = player.getUniqueId();
 
-		autoLoginData.put(playerUUID, currentIp);
+		autoLoginData.put(playerUUID, new AutoLoginData(currentIp, false));
 
 		String path = "players." + playerUUID.toString();
 		autoLoginConfig.set(path + ".playerName", player.getName());
 		autoLoginConfig.set(path + ".ip", currentIp);
+		autoLoginConfig.set(path + ".kickOtherIP", false);
 
 		try {
 			autoLoginConfig.save(autoLoginFile);
 		} catch (IOException e) {
-			plugin.getLogger().severe("autologin.yml could not be saved!");
+			plugin.getLogger().severe("No se pudo guardar el archivo autologin.yml!");
 			e.printStackTrace();
 		}
 	}

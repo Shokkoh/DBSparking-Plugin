@@ -128,6 +128,7 @@ autologin_confirm:
 autologin_success: "&a¡Perfecto! Tu IP ha sido vinculada. La próxima vez que te conectes desde esta ubicación, iniciarás sesión automáticamente."
 autologin_expired: "&cEl tiempo para confirmar ha expirado. Por favor, vuelve a intentarlo."
 autologin_welcome: "&a¡Bienvenido de nuevo! Has iniciado sesión automáticamente gracias al auto-login."
+autologin_kicked_other_ip: "&cHas sido expulsado por no ser el propietario de la cuenta."
 
 # --- GUI CUSTOM ITEMS ---
 customitem:

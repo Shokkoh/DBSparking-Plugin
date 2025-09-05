@@ -2,6 +2,7 @@ package com.shokkoh.dbsparking.events;
 
 import com.shokkoh.dbsparking.DBSparking;
 import com.shokkoh.dbsparking.Permissions;
+import com.shokkoh.dbsparking.datafetcher.AutoLoginData;
 import com.shokkoh.dbsparking.items.CustomItem;
 import com.shokkoh.dbsparking.items.StatsItem;
 import com.shokkoh.dbsparking.managers.AutoLoginManager;
@@ -135,9 +136,21 @@ public class PlayerListener implements Listener {
 
 		if (Bukkit.getServer().getPluginManager().getPlugin("AuthMe") != null ||
 			Bukkit.getServer().getPluginManager().getPlugin("AuthMeReloaded") != null) {
-			if (autoLogin.shouldAutoLogin(player)) {
-				AuthMeApi.getInstance().forceLogin(player);
-				player.sendMessage(DBSparking.getInstance().getLanguage().getMessage("autologin_welcome"));
+			AutoLoginData loginData = autoLogin.getAutoLoginData(player.getUniqueId());
+
+			if (loginData != null) {
+				String registeredIP = loginData.ip;
+				String currentIP = player.getAddress().getAddress().getHostAddress();
+
+				if (registeredIP.equals(currentIP)) {
+					AuthMeApi.getInstance().forceLogin(player);
+					player.sendMessage(DBSparking.getInstance().getLanguage().getMessage("autologin_welcome"));
+				} else {
+					if (loginData.kickOnMismatch) {
+						String kickMessage = DBSparking.getInstance().getLanguage().getRawMessage("autologin_kick_other_ip");
+						player.kickPlayer(Text.color(kickMessage));
+					}
+				}
 			}
 		}
 

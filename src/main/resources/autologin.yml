@@ -13,3 +13,4 @@ players:
 # f4353548-7e4d-3969-a6de-5b32aba10ae2:
 #   playerName: "ezShokkoh"
 #   ip: "198.0.2.1"
+#   kickOtherIP: true # Whether to kick the player if they log in from a different IP

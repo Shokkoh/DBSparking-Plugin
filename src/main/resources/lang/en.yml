@@ -128,6 +128,7 @@ autologin_confirm:
 autologin_success: "&aSuccess! Your IP has been linked. The next time you connect from this location, you will be logged in automatically."
 autologin_expired: "&cThe time to confirm has expired. Please try again."
 autologin_welcome: "&aWelcome back! You have been logged in automatically thanks to auto-login."
+autologin_kicked_other_ip: "&cYou have been kicked because you're not the account owner."
 
 # --- GUI CUSTOM ITEMS ---
 customitem:
