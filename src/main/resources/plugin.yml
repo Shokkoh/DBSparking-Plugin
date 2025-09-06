@@ -7,3 +7,104 @@ commands:
     description: Main command for DBSparking
     usage: /<command> <subcommand>
     aliases: [dbsp]
+permissions:
+  dbsparking.*:
+    description: Acceso a todos los comandos y funciones de DBSparking.
+    default: op
+    children:
+      dbsparking.admin: true
+      dbsparking.player: true
+  dbsparking.admin:
+    description: Permiso base para la administración del plugin.
+    default: op
+    children:
+      dbsparking.reload: true
+      dbsparking.help: true
+      dbsparking.tps: true
+      dbsparking.data.manage: true
+      dbsparking.title.send: true
+      dbsparking.boost.*: true
+      dbsparking.item.*: true
+      dbsparking.soulinventory: true
+  dbsparking.reload:
+    description: Permite usar /dbsp reload.
+    default: op
+  dbsparking.help:
+    description: Permite ver la lista de comandos de ayuda.
+    default: op
+  dbsparking.tps:
+    description: Permite modificar los TPs de un jugador.
+    default: op
+  dbsparking.data.manage:
+    description: Permite manejar los datos de los jugadores.
+    default: op
+  dbsparking.title.send:
+    description: Permite enviar títulos a los jugadores.
+    default: op
+  dbsparking.boost.*:
+    description: Acceso a todos los comandos de boosts.
+    default: op
+    children:
+      dbsparking.boost.delete: true
+      dbsparking.boost.list: true
+      dbsparking.boost.add: true
+  dbsparking.boost.delete:
+    description: Permite borrar boosts.
+    default: op
+  dbsparking.boost.list:
+    description: Permite listar los boosts activos.
+    default: op
+  dbsparking.boost.add:
+    description: Permite agregar nuevos boosts.
+    default: op
+  dbsparking.item.*:
+    description: Acceso a todos los comandos de items.
+    default: op
+    children:
+      dbsparking.item.list: true
+      dbsparking.item.give: true
+      dbsparking.item.delete: true
+      dbsparking.item.add: true
+      dbsparking.item.stat: true
+      dbsparking.item.edit: true
+      dbsparking.item.drop: true
+      dbsparking.item.condition: true
+      dbsparking.item.lore: true
+  dbsparking.item.list:
+    description: Permite listar los items custom.
+    default: op
+  dbsparking.item.give:
+    description: Permite dar items custom.
+    default: op
+  dbsparking.item.delete:
+    description: Permite borrar items custom.
+    default: op
+  dbsparking.item.add:
+    description: Permite crear items custom.
+    default: op
+  dbsparking.item.stat:
+    description: Permite ver las estadísticas de un item.
+    default: op
+  dbsparking.item.edit:
+    description: Permite editar un item custom.
+    default: op
+  dbsparking.item.drop:
+    description: Permite configurar el drop de un item.
+    default: op
+  dbsparking.item.condition:
+    description: Permite manejar las condiciones de los items.
+    default: op
+    children:
+      dbsparking.item.condition.override: true
+  dbsparking.item.condition.override:
+    description: Permite ignorar las condiciones de un item.
+    default: op
+  dbsparking.item.lore:
+    description: Permite modificar el lore de un item.
+    default: op
+  dbsparking.soulinventory:
+    description: Permite abrir el inventario de almas.
+    default: true
+  dbsparking.player:
+    description: Permiso básico para interactuar con el plugin.
+    default: true

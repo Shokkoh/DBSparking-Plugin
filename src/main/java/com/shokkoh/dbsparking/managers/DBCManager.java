@@ -29,11 +29,13 @@ public class DBCManager {
 		IDBCPlayer dbc = getDBC(p);
 		int currentTP = (dbc != null) ? dbc.getTP() : 0;
 		int maxDbcTps = 2000000000;
+
 		if (dbc != null) {
-			if ((currentTP + amount) >= maxDbcTps) {
-				amount = maxDbcTps - currentTP;
+			if (amount >= maxDbcTps - currentTP) {
+				dbc.setTP(maxDbcTps);
+			} else {
+				dbc.setTP(currentTP + amount);
 			}
-			dbc.setTP(currentTP + amount);
 		}
 	}
 
