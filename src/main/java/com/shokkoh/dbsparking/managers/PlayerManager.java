@@ -5,6 +5,8 @@ import com.shokkoh.dbsparking.boosters.ActiveBoost;
 import com.shokkoh.dbsparking.entities.DBSPlayer;
 import com.shokkoh.dbsparking.utils.Logger;
 import com.shokkoh.dbsparking.utils.NumberFormats;
+import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.sql.PreparedStatement;
@@ -46,6 +48,7 @@ public class PlayerManager {
 		dbsPlayer.loadEquippedSouls();
 
 		players.put(player.getUniqueId(), dbsPlayer);
+		updatePlayerDatabase(dbsPlayer);
 	}
 
 	/**
@@ -66,6 +69,7 @@ public class PlayerManager {
 			}
 		}
 		players.remove(player.getUniqueId());
+		updatePlayerDatabase(dbsPlayer);
 	}
 
 	/**
@@ -83,11 +87,32 @@ public class PlayerManager {
 	 * @return El DBSPlayer correspondiente, o null si no se encuentra.
 	 */
 	public DBSPlayer getDBSPlayerName(String name) {
-		for (DBSPlayer dbsPlayer : players.values()) {
-			if (dbsPlayer.getPlayer().getName().equalsIgnoreCase(name)) {
-				return dbsPlayer;
+		for (DBSPlayer onlineDbsPlayer : players.values()) {
+			if (onlineDbsPlayer.getPlayer().getName().equalsIgnoreCase(name)) {
+				return onlineDbsPlayer;
 			}
 		}
+
+		OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(name);
+		if (offlinePlayer == null || !offlinePlayer.hasPlayedBefore()) {
+			return null;
+		}
+
+		String sql = "SELECT level, race_id FROM dbs_players WHERE uuid = ?;";
+		try (PreparedStatement pstmt = plugin.getDatabaseManager().getConnection().prepareStatement(sql)) {
+			pstmt.setString(1, offlinePlayer.getUniqueId().toString());
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				int level = rs.getInt("level");
+				int raceId = rs.getInt("race_id");
+
+				return new DBSPlayer(offlinePlayer, level, raceId);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		return null;
 	}
 
@@ -164,6 +189,28 @@ public class PlayerManager {
 			}
 		} catch (SQLException e) {
 			Logger.severe("Error saving unlocked soul slots for player " + dbsPlayer.getPlayer().getName());
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @param dbsPlayer El jugador cuyos datos se van a guardar.
+	 */
+	private void updatePlayerDatabase(DBSPlayer dbsPlayer) {
+		String uuid = dbsPlayer.getUuid().toString();
+		String username = dbsPlayer.getPlayer().getName();
+		int level = dbsPlayer.getLevel();
+		int raceId = dbsPlayer.getRaceId();
+
+		String sql = "INSERT OR REPLACE INTO dbs_players (uuid, username, level, race_id) VALUES (?, ?, ?, ?);";
+
+		try (PreparedStatement pstmt = plugin.getDatabaseManager().getConnection().prepareStatement(sql)) {
+			pstmt.setString(1, uuid);
+			pstmt.setString(2, username);
+			pstmt.setInt(3, level);
+			pstmt.setInt(4, raceId);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}

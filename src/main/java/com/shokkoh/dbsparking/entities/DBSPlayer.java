@@ -20,6 +20,8 @@ import noppes.npcs.controllers.PartyController;
 import noppes.npcs.controllers.QuestController;
 import noppes.npcs.quests.QuestInterface;
 import noppes.npcs.scripted.NpcAPI;
+import noppes.npcs.scripted.entity.ScriptPlayer;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -37,7 +39,10 @@ import java.util.stream.Collectors;
  */
 public class DBSPlayer {
 	private final UUID uuid;
+	private int level;
+	private int raceId;
 	private final transient Player player;
+	private final transient OfflinePlayer offlinePlayer;
 	private List<ActiveBoost> activeBoosts = new ArrayList<>();
 	private final Map<Integer, StatsItem> equippedSouls = new HashMap<>();
 	private final Map<Integer, Boolean> slotOverrides = new HashMap<>();
@@ -52,6 +57,17 @@ public class DBSPlayer {
 	public DBSPlayer(Player player) {
 		this.uuid = player.getUniqueId();
 		this.player = player;
+		this.offlinePlayer = player;
+		this.level = getLevel();
+		this.raceId = getRaceId();
+	}
+
+	public DBSPlayer(OfflinePlayer offlinePlayer, int level, int raceId) {
+		this.uuid = offlinePlayer.getUniqueId();
+		this.player = null;
+		this.offlinePlayer = offlinePlayer;
+		this.level = level;
+		this.raceId = raceId;
 	}
 
 	public UUID getUuid() {
@@ -187,18 +203,22 @@ public class DBSPlayer {
 		return false;
 	}
 
+	public boolean isOnline() {
+		return this.player != null && this.player.isOnline();
+	}
+
 	public int getLevel() {
-		return (dbcManager.getStat(player, "str") + dbcManager.getStat(player, "dex") +
-				dbcManager.getStat(player, "con") + dbcManager.getStat(player, "wil") +
-				dbcManager.getStat(player, "mnd") + dbcManager.getStat(player, "spi")) / 5 - 11;
+		if (isOnline()) return this.dbcManager.getLevel(this.player);
+		return this.level;
 	}
 
 	public int getRaceId() {
-		return dbcManager.getRace(player);
+		if (isOnline()) return this.dbcManager.getRace(this.player);
+		return this.raceId;
 	}
 
 	public String getRaceName() {
-		int raceId = dbcManager.getRace(player);
+		int raceId = getRaceId();
 		return plugin.getLanguage().getRawMessage("placeholder.race_" + raceId);
 	}
 
@@ -922,6 +942,15 @@ public class DBSPlayer {
 			return field.get(obj);
 		} catch (NoSuchFieldException | IllegalAccessException e) {
 			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public ScriptPlayer getScriptPlayer() {
+		try {
+			if (player == null || !player.isOnline()) return null;
+			return (ScriptPlayer) getIPlayer();
+		} catch (Throwable t) {
 			return null;
 		}
 	}

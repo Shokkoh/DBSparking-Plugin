@@ -85,7 +85,9 @@ public class DatabaseManager {
 				+ "uuid VARCHAR(36) PRIMARY KEY NOT NULL,"
 				+ "username VARCHAR(16) NOT NULL,"
 				+ "notify_enabled BOOLEAN DEFAULT true,"
-				+ "unlocked_soul_slots VARCHAR(255) DEFAULT ''"
+				+ "unlocked_soul_slots VARCHAR(255) DEFAULT '',"
+				+ "level INTEGER DEFAULT 0,"
+				+ "race_id INTEGER DEFAULT 0"
 				+ ");";
 
 

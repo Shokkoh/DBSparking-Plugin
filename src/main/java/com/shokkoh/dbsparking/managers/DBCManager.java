@@ -20,6 +20,11 @@ public class DBCManager {
 		}
 	}
 
+	public int getLevel(Player p) {
+		return (getStat(p, "str") + getStat(p, "dex") + getStat(p, "con") + getStat(p, "wil")
+				+ getStat(p, "mnd") + getStat(p, "spi")) / 5 - 11;
+	}
+
 	public int getTP(Player p) {
 		IDBCPlayer dbc = getDBC(p);
 		return (dbc != null) ? dbc.getTP() : 0;
