@@ -874,7 +874,7 @@ public class DBSPlayer {
 	/**
 	 * Métodos privado para obtener el objeto Party del jugador.
 	 */
-	private Party getParty() {
+	public IParty getParty() {
 		IPlayer iPlayer = getIPlayer();
 		if (iPlayer == null) {
 			return null;
@@ -885,7 +885,8 @@ public class DBSPlayer {
 		if (playerData == null || playerData.partyUUID == null) {
 			return null;
 		}
-		return PartyController.Instance().getParty(playerData.partyUUID);
+
+		return (IParty) PartyController.Instance().getParty(playerData.partyUUID);
 	}
 
 	/**
@@ -899,7 +900,7 @@ public class DBSPlayer {
 	 * Obtiene el nombre del líder de la party del jugador.
 	 */
 	public String getPartyLeader() {
-		Party party = getParty();
+		IParty party = getParty();
 		if (party != null) {
 			return plugin.getLanguage().getRawMessage("party_leader_name")
 					.replace("%leader%", party.getPartyLeaderName());
@@ -911,7 +912,7 @@ public class DBSPlayer {
 	 * Obtiene el número de miembros en la party del jugador.
 	 */
 	public int getPartySize() {
-		Party party = getParty();
+		IParty party = getParty();
 		if (party != null) {
 			return party.getPlayerNamesList().size();
 		}
@@ -922,7 +923,7 @@ public class DBSPlayer {
 	 * Obtiene una lista con los nombres de todos los miembros de la party.
 	 */
 	public List<String> getPartyMembers() {
-		Party party = getParty();
+		IParty party = getParty();
 		if (party != null) {
 			return party.getPlayerNamesList();
 		}

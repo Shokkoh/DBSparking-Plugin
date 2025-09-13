@@ -13,6 +13,7 @@ import com.shokkoh.dbsparking.tasks.ItemEquipTask;
 import com.shokkoh.dbsparking.tasks.TpsTask;
 import com.shokkoh.dbsparking.utils.DBSPlaceholders;
 import com.shokkoh.dbsparking.utils.Logger;
+import com.shokkoh.dbsparking.utils.WorldGuardBridge;
 import net.luckperms.api.LuckPerms;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -38,6 +39,7 @@ public class DBSparking extends JavaPlugin {
     private AutoLoginManager autoLoginManager;
     public static Permission perms = null;
     public static LuckPerms luckPerms = null;
+    private WorldGuardBridge wgBridge;
 
     PluginDescriptionFile pdfile = this.getDescription();
     public String PlVersion;
@@ -91,6 +93,10 @@ public class DBSparking extends JavaPlugin {
         this.itemConfigManager = new ItemConfigManager(this);
         this.autoLoginManager = new AutoLoginManager(this);
         this.dataFetcherManager = new DataFetcherManager();
+        this.wgBridge = new WorldGuardBridge();
+        if (wgBridge.isEnabled()) {
+            Logger.info("Successfully hooked into WorldGuard.");
+        }
 
         // 5. Cargar datos desde la base de datos a la caché
         this.boostManager.loadBoostsFromDatabase();
@@ -194,6 +200,10 @@ public class DBSparking extends JavaPlugin {
 	public ItemConfigManager getItemConfigManager() {
 		return itemConfigManager;
 	}
+
+    public WorldGuardBridge getWgBridge() {
+        return wgBridge;
+    }
 
     public void saveDefaultItemsFile() {
         if (!new File(getDataFolder(), "items.yml").exists()) {

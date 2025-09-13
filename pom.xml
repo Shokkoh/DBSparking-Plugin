@@ -141,6 +141,24 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- WorldGuard y WorldEdit -->
+        <dependency>
+            <groupId>com.sk89q.worldedit</groupId>
+            <artifactId>worldedit-bukkit</artifactId>
+            <version>6.1.9</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/worldedit-bukkit-6.1.9.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sk89q.worldguard</groupId>
+            <artifactId>worldguard-bukkit</artifactId>
+            <version>6.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/worldguard-6.1.jar</systemPath>
+        </dependency>
+
+
     <!-- Correcciones a Vulnerabilidades -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
