@@ -29,6 +29,7 @@ public class CommandManager implements CommandExecutor {
 		subCommands.add(new CustomItemCommand());
 		subCommands.add(new ExecutePlayerCommand());
 		subCommands.add(new AutoLoginCommand());
+		subCommands.add(new FullTitleCommand());
 	}
 
 	@Override

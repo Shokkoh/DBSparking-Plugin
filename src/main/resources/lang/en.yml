@@ -128,7 +128,13 @@ autologin_confirm:
 autologin_success: "&aSuccess! Your IP has been linked. The next time you connect from this location, you will be logged in automatically."
 autologin_expired: "&cThe time to confirm has expired. Please try again."
 autologin_welcome: "&aWelcome back! You have been logged in automatically thanks to auto-login."
-autologin_kicked_other_ip: "&cYou have been kicked because you're not the account owner."
+autologin_kick_other_ip: "&cYou have been kicked because you're not the account owner."
+
+# --- FULLTITLE COMMAND ---
+write_title: "&aPlease type your desired title in chat. Type 'cancel' to abort."
+write_subtitle: "&aNow type your desired subtitle in chat. Type 'cancel' to abort."
+title_sent: "&aTitle and subtitle sent successfully!"
+title_cancelled: "&cTitle creation cancelled."
 
 # --- GUI CUSTOM ITEMS ---
 customitem:
